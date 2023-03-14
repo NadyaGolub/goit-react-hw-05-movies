@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Params, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'services/api';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
