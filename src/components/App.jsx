@@ -6,6 +6,7 @@ import Cast from './Cast';
 import Navigation from './Navigation';
 import Reviews from './Reviews';
 
+
 function App() {
   return (
     <div>
@@ -19,6 +20,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
+      
     </div>
   );
 }

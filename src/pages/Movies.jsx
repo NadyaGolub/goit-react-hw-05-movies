@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getMoviesByQuery } from 'services/api';
 
+
 export default function Movies() {
     
     const [movies, setMovies] = useState([]);
@@ -10,8 +11,11 @@ export default function Movies() {
     const query = params.get('query');
     const [value, setValue] = useState(query ?? '');
 
+  
+  
   useEffect(() => {
-      if (!query) {
+    if (!query) {
+      
           return;
       }
       getMoviesByQuery(query).then(setMovies);
@@ -29,6 +33,7 @@ export default function Movies() {
       <form onSubmit={handleSubmit}>
         <input value={value} onChange={e => setValue(e.target.value)} type="text" name="query" />
         <button type="submit">Search</button>
+        
           </form>
           <MoviesList movies={movies} />
     </div>
