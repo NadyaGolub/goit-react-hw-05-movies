@@ -1,15 +1,17 @@
 import Home from 'pages/Home';
-import MovieDetails from 'pages/MovieDetails';
+import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import Movies from 'pages/Movies';
 import { Route, Routes } from 'react-router-dom';
-import Cast from './Cast';
-import Navigation from './Navigation';
-import Reviews from './Reviews';
+import Cast from '../Cast/Cast';
+import { GlobalStyle } from '../GlobalStyle';
+import Navigation from '../Navigation/Navigation';
+import { Box } from '../App/App.styled';
+import Reviews from '../Reviews';
 
 
 function App() {
   return (
-    <div>
+    <Box>
       <Routes>
         <Route path='/' element={<Navigation/>}>
           <Route index element={<Home />} />
@@ -20,8 +22,8 @@ function App() {
           </Route>
         </Route>
       </Routes>
-      
-    </div>
+      <GlobalStyle/>
+    </Box>
   );
 }
 
