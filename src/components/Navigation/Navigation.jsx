@@ -1,19 +1,21 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Loader } from '../Loader';
+import Loader from 'components/Loader';
 import { BoxHome, TitleNav } from './Navigation.styled';
 
 
-export default function Navigation() {
+function Navigation() {
   return (
     <BoxHome>
       <nav>
         <TitleNav to="/">Home</TitleNav>
         <TitleNav to="/movies">Movies</TitleNav>
       </nav>
-      <Suspense fallback={<p><Loader/></p>}>
+      <Suspense fallback={<Loader/>}>
         <Outlet />
       </Suspense>
     </BoxHome>
   );
 }
+
+export default Navigation;

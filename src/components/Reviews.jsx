@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieReviews } from "services/api";
+import * as API from '../services/api';
 
 
 
 
-export default function Reviews() {
+function Reviews() {
     const [reviews, setReviews] = useState([]);
     const {id} = useParams();
 
     useEffect(() => { 
-        getMovieReviews(id).then(setReviews);
+        const abortConroller = new AbortController();
+        API.getMovieReviews(id, abortConroller).then(setReviews);
+
+        return () => {
+            abortConroller.abort();
+        };
     }, [id]);
 
     return (
@@ -25,3 +30,5 @@ export default function Reviews() {
         </div>
     );
 }
+
+export default Reviews;

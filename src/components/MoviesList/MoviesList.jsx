@@ -1,7 +1,10 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { Container, Item, Title } from './MoviesList.styled';
+import PropTypes from 'prop-types';
+
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
-export default function MoviesList({ movies }) {
+
+function MoviesList({ movies }) {
   const location = useLocation();
 
   return (
@@ -17,3 +20,18 @@ export default function MoviesList({ movies }) {
     </Container>
   );
 }
+
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      name: PropTypes.string,
+      original_title: PropTypes.string,
+     
+    })
+  ).isRequired,
+};
+
+export default MoviesList;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieCast } from 'services/api';
+import * as API from '../../services/api';
 import { CastList, NoImage } from './Cast.styled';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
@@ -9,7 +9,11 @@ export default function Cast() {
   const { id } = useParams();
 
   useEffect(() => {
-    getMovieCast(id).then(setCast);
+    const abortConroller = new AbortController();
+    API.getMovieCast(id, abortConroller).then(setCast);
+    return () => {
+      abortConroller.abort();
+    };
   }, [id]);
 
   return (
